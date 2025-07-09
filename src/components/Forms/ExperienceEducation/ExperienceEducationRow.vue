@@ -2,20 +2,31 @@
   <q-card
     flat
     bordered
-    class="bg-white q-pa-md  shadow-3 rounded-xl bg-blue-1"
+    class="bg-white q-pa-md shadow-3 rounded-xl bg-blue-1"
     style=" width: 100%; margin: 20px auto"
   >
-
+    <div class="row justify-end">
+      <q-btn
+        icon="delete"
+        flat
+        round
+        dense
+        size="md"
+        color="red"
+        @click="$emit('removeField')"
+        class="q-mb-sm"
+      />
+    </div>
     <q-card-section class="qcardsection q-mt-md ">
-        <div class="row justify-center items-center gap-5 ">
+        <div class="row q-col-gutter-md ">
 
-            <!-- عنوان شغلی-->
-            <div class="col-md-4 col-sm-12">
+          <!-- عنوان شغلی-->
+          <div class="col-md-5 col-sm-12">
             <label class="mb-1" for="name"> عنوان شغلی</label>
                 <q-input
                 id="name"
-                v-model="model.name"
-                placeholder="مثال: برنامه نویس فرانت اند"
+                v-model="model.Grade"
+                placeholder="مقطع تحصیلی"
                 outlined
                 dense
                 :rules="[val => !!val || 'عنوان شغلی الزامی است']"
@@ -23,14 +34,44 @@
                 hide-label
                 class="w-100"
                 />
-            </div>
+          </div>
 
             <!--  شرکت -->
-            <div class="col-4 ">
-                <label class="mb-1" for="fathersName"> شرکت</label>
+          <div class="col-5 ">
+            <label class="mb-1" for="fathersName"> شرکت</label>
+              <q-input
+                v-model="model.Majere"
+                placeholder="رشته تحصیلی  "
+                outlined
+                dense
+                :rules="[val => !!val || ' الزامی است']"
+                clearable
+                hide-label
+                class="w-100"
+                />
+          </div>
+            
+            <!-- مدت زمان -->
+            <div class="col-2 ">
+              <label class="mb-1" for="fathersName">  سال فارغ التحصیلی</label>
+              <q-input
+                id="fathersName"
+                type="number"
+                v-model="model.timeEducation"
+                placeholder="1402"
+                outlined
+                dense
+                :rules="[val => !!val || '  الزامی است']"
+                clearable
+                hide-label
+                class="w-100"
+              />
+            </div>
+             <div class="col-6 ">
+                <label class="mb-1" for="fathersName"> نام دانشگاه</label>
                 <q-input
-                    v-model="model.CommpanyJob"
-                    placeholder="مثال: دیجی کالا"
+                    v-model="model.UniName"
+                    placeholder=" نام دانشگاه  "
                     outlined
                     dense
                     :rules="[val => !!val || ' الزامی است']"
@@ -39,23 +80,20 @@
                     class="w-100"
                 />
             </div>
-            <!-- مدت زمان -->
-            <div class="col-2 ">
-                <label class="mb-1" for="fathersName"> مدت زمان</label>
+             <div class="col-6 ">
+                <label class="mb-1" for="fathersName"> نام دانشگاه</label>
                 <q-input
-                    id="fathersName"
-                    type="number"
-                    v-model="model.fathersName"
-                    placeholder="مثال: 0"
+                    v-model="model.UniName"
+                    placeholder=" نام دانشگاه  "
                     outlined
                     dense
-                    :rules="[val => !!val || '  الزامی است']"
+                    :rules="[val => !!val || ' الزامی است']"
                     clearable
                     hide-label
                     class="w-100"
                 />
             </div>
-
+            
         </div>
 
        
@@ -65,21 +103,28 @@
 
 <script>
 export default {
-  name: "ExperienceRow",
+  name: "ExperienceEducationRow",
   props: {
-    value: Object
+    value: {
+      type: Object,
+    }
   },
   data() {
     return {
       model: {
-        SubjectJob:"",
-        CommpanyJob:"",
-        time:""
+        Grade: "",
+        Majere: "",
+        timeEducation: "",
+        UniName:""
         
       },
   
     };
   },
+
+  // created() {
+  //   this.model = this.value
+  // }
  
 };
 </script>

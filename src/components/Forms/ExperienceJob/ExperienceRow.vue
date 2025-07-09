@@ -5,58 +5,68 @@
     class="bg-white q-pa-md  shadow-3 rounded-xl bg-blue-1"
     style=" width: 100%; margin: 20px auto"
   >
-
+    <div class="row justify-end">
+      <q-btn
+        icon="delete"
+        flat
+        round
+        dense
+        size="md"
+        color="red"
+        @click="$emit('removeField')"
+        class="q-mb-sm"
+      />
+    </div>
     <q-card-section class="qcardsection q-mt-md ">
-        <div class="row justify-center items-center gap-5 ">
+      <div class="row q-col-gutter-md">
 
-            <!-- عنوان شغلی-->
-            <div class="col-md-4 col-sm-12">
-            <label class="mb-1" for="name"> عنوان شغلی</label>
-                <q-input
-                id="name"
-                v-model="model.name"
-                placeholder="مثال: برنامه نویس فرانت اند"
-                outlined
-                dense
-                :rules="[val => !!val || 'عنوان شغلی الزامی است']"
-                clearable
-                hide-label
-                class="w-100"
-                />
-            </div>
-
-            <!--  شرکت -->
-            <div class="col-4 ">
-                <label class="mb-1" for="fathersName"> شرکت</label>
-                <q-input
-                    v-model="model.CommpanyJob"
-                    placeholder="مثال: دیجی کالا"
-                    outlined
-                    dense
-                    :rules="[val => !!val || ' الزامی است']"
-                    clearable
-                    hide-label
-                    class="w-100"
-                />
-            </div>
-            <!-- مدت زمان -->
-            <div class="col-2 ">
-                <label class="mb-1" for="fathersName"> مدت زمان</label>
-                <q-input
-                    id="fathersName"
-                    type="number"
-                    v-model="model.fathersName"
-                    placeholder="مثال: 0"
-                    outlined
-                    dense
-                    :rules="[val => !!val || '  الزامی است']"
-                    clearable
-                    hide-label
-                    class="w-100"
-                />
-            </div>
-
+        <!-- عنوان شغلی-->
+        <div class="col-md-5 col-12">
+          <label class="mb-1" for="name"> عنوان شغلی</label>
+            <q-input
+              id="name"
+              v-model="model.name"
+              placeholder="مثال: برنامه نویس فرانت اند"
+              outlined
+              dense
+              :rules="[val => !!val || 'عنوان شغلی الزامی است']"
+              clearable
+              hide-label
+              class="w-100"
+            />
         </div>
+
+        <!--  شرکت -->
+        <div class="col-md-5 col-12 ">
+          <label class="mb-1" for="fathersName"> شرکت</label>
+          <q-input
+            v-model="model.CommpanyJob"
+            placeholder="مثال: دیجی کالا"
+            outlined
+            dense
+            :rules="[val => !!val || ' الزامی است']"
+            clearable
+            hide-label
+            class="w-100"
+          />
+        </div>
+            <!-- مدت زمان -->
+        <div class="col-md-2 col-12">
+            <label class="mb-1" for="fathersName"> مدت زمان</label>
+            <q-input
+             id="fathersName"
+              type="number"
+              v-model="model.fathersName"
+              placeholder="مثال: 0"
+              outlined
+              dense
+              :rules="[val => !!val || '  الزامی است']"
+              clearable
+              hide-label
+              class="w-100"
+            />
+        </div>
+      </div>  
 
        
     </q-card-section>

@@ -1,7 +1,7 @@
 <template>
-  <div style="width: 80%;">
+  <div class=" responsive-container ">
    
-    <div class=" row justify-center items-center  q-pa-md" style="width: 100%;" >
+    <div class=" row justify-center items-center " >
       <PersonalInfoRow
         v-for="(person, index) in personalInfoList"
         v-model="personalInfoList[index]"
@@ -45,3 +45,14 @@ export default {
   },
 };
 </script>
+<style >
+.responsive-container {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .responsive-container {
+    width: 80%;
+  }
+}
+</style>

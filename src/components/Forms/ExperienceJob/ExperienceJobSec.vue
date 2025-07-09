@@ -1,27 +1,33 @@
 <template>
-  <div class="bg-blue-grey-11 q-pa-md rounded-xl" style="width: 80%; margin: auto;">
-   
-    <div class="q-mb-md row justify-between items-center ">
-      
+  <div class="responsive-container q-pa-md rounded-xl"  >
+
+    <!-- هدر بالا -->
+    <div class="q-mb-md row justify-between items-center">
       <q-btn
         label="افزودن +"
         class="bg-deep-purple-8 text-white"
         @click="handelAddField()"
+        
       />
       <p class="text-h5">اطلاعات شغلی</p>
+
     </div>
 
-    <div class="row justify-center items-center">
-      <ExperienceRow
-        v-for="(item, index) in ExperienceList"
-        :key="item.id"
-        v-model="ExperienceList[index]"
-      />
+    <!-- لیست ردیف‌ها -->
+    <div class="row justify-center items-center  ">
+      <div class="col-12 " v-for="(item, index) in ExperienceList" :key="item.id">
+        <ExperienceRow
+          v-model="ExperienceList[index]"
+          :index="index"
+          @removeField="removeItem(index)"
+        />
+      </div>
     </div>
+
   </div>
 </template>
-<script>
 
+<script>
 import ExperienceRow from './ExperienceRow.vue';
 
 export default {
@@ -39,6 +45,7 @@ export default {
       ]
     };
   },
+  
   methods: {
     handelAddField() {
       this.ExperienceList.push({
@@ -47,13 +54,25 @@ export default {
         CommpanyJob: "",
         time: ""
       });
+    },
+    removeItem(index) {
+      this.ExperienceList.splice(index, 1);
     }
   }
 };
 </script>
-<style>
 
+<style >
 .rounded-xl {
   border-radius: 20px;
+}
+.responsive-container {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .responsive-container {
+    width: 80%;
+  }
 }
 </style>

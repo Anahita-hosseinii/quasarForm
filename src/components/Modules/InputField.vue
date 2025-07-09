@@ -7,7 +7,7 @@
       outlined
       dense
       :rules="rules"
-      clearable
+      :clearable="clearable"
       hide-label
       class="w-100"
       :type="type"
@@ -23,6 +23,10 @@ export default {
     value: [String, Number],
     label: String,
     rules: Array,
+    clearable: {
+      type: Boolean,
+      default: true
+    },
     placeholder: String,
     type: {
       type: String,
